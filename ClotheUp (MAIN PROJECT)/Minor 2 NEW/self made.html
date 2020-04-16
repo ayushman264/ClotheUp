@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .question,.heading,section{-webkit-backface-visibility:hidden}
+  .question .number{display:inline-block;width:50px;height:50px;font-family:"adobe-caslon-pro",serif;-webkit-border-radius:25px;-moz-border-radius:25px;border-radius:25px;border:2px solid #423d3d;color:#423d3d;line-height:54px;font-style:italic;font-size:22px;text-align:center;margin-bottom:35px}
+  
+  .row,.question,.heading,section{-webkit-backface-visibility:hidden}html,body{margin:0px;padding:0px;height:100%;width:100%}input[type=radio],input[type=checkbox]{display:none}input[type=radio].show-always,input[type=checkbox].show-always{display:inherit}#survey-wrapper section{position:relative;min-height:100px}#survey-wrapper section.header{min-height:200px;padding:0px 10px 10px 0px !important;background-color:#155076;text-align:center}#survey-wrapper section.header .caret{border-top-color:#347edb}#survey-wrapper section.header .title1{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:24px;font-style:italic;margin:50px 10% 0px 10%;height:25px;line-height:25px;color:#fff}#survey-wrapper section.header .title2{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:48px;font-weight:bold;color:#fff;margin-top:10px;letter-spacing:5px;text-transform:uppercase}#survey-wrapper section.footer{border:none;min-height:200px;padding:0px !important;background-color:#FFF;text-align:center;overflow:hidden;margin-left:0px}#survey-wrapper section.footer .button-wrapper{padding:10px 10px}#survey-wrapper section.footer .button-wrapper .btn-survey{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;display:inline-block;cursor:pointer;width:380px;padding:30px 0px;text-align:center;font-size:19px;font-weight:bold;margin:5px;line-height:20px;color:#fff;width:66.66666666666666%;text-transform:uppercase}@media (min-width: 992px){#survey-wrapper section.footer .button-wrapper .btn-survey{width:33.33333%}}#survey-wrapper section.footer .button-wrapper .btn-survey.submit{background-color:#155076;border:none}#survey-wrapper section.footer .button-wrapper .btn-survey.preferences{padding:25px 0px;color:#155076;border:5px solid #155076;background-color:#FFF}#survey-wrapper section.footer .button-wrapper .btn-survey .chevron{margin-left:18px}@media screen and (max-width: 750px){#survey-wrapper section.footer .button-wrapper{margin-top:25px}#survey-wrapper section.footer .button-wrapper .btn-survey{width:100%;margin:10px 0px 0px 0px}}#survey-wrapper section>.heading{background-color:#F3F3F3;min-height:225px;position:relative;margin-bottom:75px;padding-top:58px}#survey-wrapper section>.heading .caret{float:left;position:absolute;top:100%;border:solid transparent;content:" ";height:0;width:0;border-color:none;border-top-color:#F3F3F3;border-width:50px 50px 0 50px;left:50%;margin-left:-50px;z-index:100}#survey-wrapper section .question-body{margin-bottom:65px;padding-top:26px}#survey-wrapper section .question-body.row{margin-left:0px;margin-right:0px}#survey-wrapper section .question{width:100%;margin-bottom:90px;text-align:center}#survey-wrapper section .question .blank-space{display:inline-block;width:10%}#survey-wrapper section .question .number{display:inline-block;width:50px;height:50px;font-family:"adobe-caslon-pro",serif;-webkit-border-radius:25px;-moz-border-radius:25px;border-radius:25px;border:2px solid #423d3d;color:#423d3d;line-height:54px;font-style:italic;font-size:22px;text-align:center;margin-bottom:35px}#survey-wrapper section .question .title{display:block;font-family:"adobe-caslon-pro",serif;color:#423D3D;font-size:24px;min-height:30px;line-height:30px;text-align:center;width:80%;margin-left:10%}@media screen and (min-width: 400px){#survey-wrapper section .question .title{font-size:30px}}#survey-wrapper section .question .first-question{height:58px;width:2px;background-color:#423d3d;margin-left:-1px;left:50%;top:0px;position:absolute}#survey-wrapper section .question.optional .title:after{color:#347edb;content:"(optional)"}#survey-wrapper section .question.required .title:after{color:#347edb;content:"(required)"}#survey-wrapper section .question label.optional:after{color:#347edb;content:"(optional)"}#survey-wrapper section .question label.required:after{color:#347edb;content:"(required)"}#survey-wrapper section .question .subheader{font-size:20px;font-family:"adobe-caslon-pro",serif;padding-bottom:40px;margin-top:10px;text-align:center;color:#A7A7A7}#survey-wrapper section.survey-payment .question-body{margin-bottom:0 !important}#survey-wrapper section.survey-payment .question-body .plan-trial h1,#survey-wrapper section.survey-payment .question-body .plan-trial p{color:#1d425d;text-align:center}#survey-wrapper section.survey-payment .question-body .plan-trial h1{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:30px}#survey-wrapper section.survey-payment .question-body .plan-trial p{font-family:"adobe-caslon-pro",serif;font-size:19px;font-style:italic;margin-top:10px;margin-bottom:25px}#survey-wrapper section.survey-payment .question-body .quarterly-cta{max-width:600px;margin:0 auto;background-color:#fff;position:relative;border:1px #9c9c9c solid;padding:40px 8px 30px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;overflow:hidden}#survey-wrapper section.survey-payment .question-body .quarterly-cta:after{content:'';box-sizing:border-box;position:absolute;top:-1px;right:-1px;width:25px;height:25px;border:25px solid #cc3535;border-left-color:transparent;border-bottom-color:transparent;border-radius:0 2px 0 0;-moz-border-radius:0 2px 0 0;-webkit-border-radius:0 2px 0 0}#survey-wrapper section.survey-payment .question-body .quarterly-cta i.fa-star{position:absolute;top:7px;right:6px;color:#fff;font-size:14px;z-index:9}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial h1{font-size:24px}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial p{font-size:24px}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial ul.checklist{margin-top:32px;margin-bottom:50px}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial ul.checklist li{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:#8c8c8c;text-transform:uppercase;font-size:15px;margin-bottom:8px;list-style-type:none;position:relative}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial ul.checklist li:before{content:'';width:25px;height:25px;background-image:url("/assets/survey/ui/icon_check.jpg");display:inline-block;top:6px;position:relative;left:-7px;background-size:25px}@media (max-width: 767px){#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial ul.checklist li:before{position:absolute;left:-35px}}.mobile #survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown,.touch #survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown{display:none}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown div.current-season.dropdown-toggle{display:block;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:#7f7f7f;font-size:17px;padding:26px 15px;cursor:pointer;border:1px #9c9c9c solid;background:#fff;background:-moz-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f7f7f7));background:-webkit-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:-o-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:-ms-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 )}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown div.current-season.dropdown-toggle span.fa-stack{color:#d9d9d9;position:relative;top:-4px;margin-right:10px;height:1.5em}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown div.current-season.dropdown-toggle span.fa-stack .fa-stack-2x.fa{font-size:inherit !important}.open #survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown div.current-season.dropdown-toggle{background:white}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu{background-color:#fff;border:1px #9c9c9c solid;width:100%;font-size:15px;top:66px;color:#8e8e8e;padding-top:15px;-webkit-border-radius:0 !important;-moz-border-radius:0 !important;border-radius:0 !important}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu:before{display:none}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu li{padding:10px 20px}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu li:not(.dummy){font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;text-transform:uppercase;text-align:center;cursor:pointer}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu li:not(.dummy):hover{color:#000}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons.dropdown ul.dropdown-menu li p.ill{font-size:14px;color:#646464;padding:7px 10px 3px;background-color:#f7f7f7;-webkit-border-radius:50px;-moz-border-radius:50px;border-radius:50px;margin:0}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile{display:none}.mobile #survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile,.touch #survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile{display:block}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile select{margin:0 auto;display:block;width:100%;margin-bottom:20px;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile p{margin-bottom:10px}#survey-wrapper section.survey-payment .question-body .quarterly-cta .plan-trial .seasons-mobile p.ill{font-size:14px}@media (min-width: 768px){#survey-wrapper section.survey-payment .question-body .quarterly-cta{padding:60px 40px}}@media (max-width: 767px){#survey-wrapper section.survey-payment .question-body .credit-card-input{padding:0 10px}}#survey-wrapper section.survey-payment .question-body .credit-card-input input{font-size:1.1em}#survey-wrapper section.survey-payment .accept-terms{text-align:center;color:#373737;position:relative;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:14px}#survey-wrapper section.survey-payment .accept-terms p{font-weight:normal;color:#373737;font-size:14px;text-align:center}#survey-wrapper section.survey-payment .accept-terms label input[type=checkbox]{margin-right:5px;margin-bottom:15px;margin-top:15px;width:20px;height:20px;position:relative;top:5px}#survey-wrapper section.survey-payment .accept-terms label span{text-decoration:underline;cursor:pointer}@media screen and (max-width: 992px){#survey-wrapper section .question{margin-bottom:50px}}.survey-item{margin:0px 10px;text-align:center;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:#345975}.survey-item .question-description{margin-top:65px;display:block;margin:0px 10%}.survey-item .question-description>.title{text-transform:uppercase;text-align:center;font-weight:bold}.survey-item .question-description>.text{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;margin-top:22px;text-align:center}@media screen and (max-width: 376px){.survey-item .question-description.mobile-label{display:none}}.survey-item.three_column{width:850px;margin:auto}.survey-item.three_column .item{display:inline-block;border:1px solid #ededed;box-shadow:1px 1px 2px 2px rgba(100,100,100,0.3);width:250px;height:250px;padding:4px;margin:23px 15px;background-color:#fff}.survey-item.three_column .item.active{box-shadow:none;border:5px solid #9cb271 !important;padding:0px}.survey-item.three_column .item:hover{box-shadow:none;border:5px solid #DDD;padding:0px}.survey-item.three_column .item .disabled{width:250px;height:250px;position:absolute;background-color:rgba(0,0,0,0.5);margin:-5px 0px 0px -5px;cursor:not-allowed}.survey-item.three_column .item .disabled .text{color:#FFF;margin-top:100px;width:200px;text-align:center;display:inline-block;text-shadow:2px 2px #000}.survey-item.three_column .item .item-inner{display:block;background-color:#fff;padding:10px 20px 0px 20px}.survey-item.three_column .item .item-inner span.title{display:block;width:100%;padding:4px 0px}.survey-item.three_column .item .item-inner img{width:100%;padding:3px}.survey-item.five_column{width:1000px;margin:auto}.survey-item.five_column .item{background-color:#fff;display:inline-block;width:170px;height:180px;margin:23px 12px;border:1px solid #ededed;box-shadow:0px 1px 1px 0px rgba(0,0,0,0.3);padding:14px}.survey-item.five_column .item.active{padding:10px;border:5px solid #9cb271 !important}.survey-item.five_column .item:hover{padding:10px;border:5px solid #DDD}.survey-item.five_column .item .item-inner span.title{display:block;width:100%;padding:1px 0px 7px 0px}.survey-item.five_column .item .item-inner span.title-wrapper span.title{padding:65px 0px}.survey-item.five_column .item .item-inner img{width:100%;padding:3px}.survey-item.style-fingerprint{margin:0px 0px 40px 0px;padding:15px 10px 50px 10px;border-bottom:1px solid #b9b9b9}.survey-item.style-fingerprint:last-of-type{border-bottom:none;padding-bottom:0px;margin-bottom:0px}.survey-item.style-fingerprint h4{font-family:"adobe-caslon-pro",serif;font-size:20px;font-style:italic;color:#000000;margin-bottom:22px;text-transform:none !important;font-weight:100;letter-spacing:0}.survey-item.style-fingerprint h4:before{content:"“"}.survey-item.style-fingerprint h4:after{content:"”"}.survey-item.style-fingerprint div.fingerprint-group{width:75%;margin:auto}.survey-item.style-fingerprint div.fingerprint-group label{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:14px;padding:16px 0px;text-align:center;background-color:#EFEFEF;color:#000000;width:100%;font-weight:normal;border:3px solid #EFEFEF;cursor:pointer;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.survey-item.style-fingerprint div.fingerprint-group label:hover{background-color:#D7D7D7;border-color:#D7D7D7}.survey-item.style-fingerprint div.fingerprint-group input[type=radio]:checked+label{background-color:#3C3C3C;border-color:#000000;color:#FFFFFF}@media (min-width: 800px){.survey-item.style-fingerprint div.fingerprint-group{display:inline-block;width:120px;margin:0px 3px}}@media (min-width: 1000px){.survey-item.style-fingerprint div.fingerprint-group{width:150px}}@media (min-width: 1200px){.survey-item.style-fingerprint div.fingerprint-group{width:170px}}.survey-item.climate>div{padding:0px 10px}.survey-item.climate .item{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-weight:normal;cursor:pointer;display:block;width:100%;border:3px solid;color:#fff;font-size:14px;line-height:16px;padding:10px;text-align:center;margin:10px 0px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.survey-item.climate .item.active{background-color:#ffffff !important;border-width:5px !important;padding:8px 10px !important}.survey-item.climate .item:hover{opacity:0.8}.survey-item.climate .item.far-south{border-color:#812819;background-color:#b71a00}.survey-item.climate .item.far-south.active{color:#812819}.survey-item.climate .item.south{border-color:#c18317;background-color:#ffa200}.survey-item.climate .item.south.active{color:#c18317}.survey-item.climate .item.middle{border-color:#d0bd52;background-color:#ffe970;color:#796e32}.survey-item.climate .item.middle.active{color:#796e32}.survey-item.climate .item.north{border-color:#5f95b5;background-color:#66b7e6}.survey-item.climate .item.north.active{color:#5f95b5}.survey-item.climate .item.far-north{border-color:#324495;background-color:#3257FF}.survey-item.climate .item.far-north.active{color:#324495}.survey-item.body-preset>.mobile-label:not(.question-description){display:inlne;width:90%;margin:0px auto 20px auto}@media screen and (min-width: 377px){.survey-item.body-preset>.mobile-label:not(.question-description){display:none}}.survey-item.body-preset .item{display:inline-block;margin:23px 8px;padding:4px;border:1px solid #ededed;box-shadow:1px 1px 2px 2px rgba(100,100,100,0.3);background-color:#fff;cursor:pointer}.survey-item.body-preset .item.active{box-shadow:none;border:5px solid #9cb271 !important;padding:0px}.survey-item.body-preset .item:hover{box-shadow:none;border:5px solid #DDD;padding:0px}.survey-item.body-preset .item .item-inner{display:block;background-color:#fff;padding:15px 10px 10px 10px}.survey-item.body-preset .item .item-inner img{margin:30px 40px;width:51px;height:165px}.survey-item.body-preset .item .item-inner span.title{display:block;width:100%;padding:7px 0px}.survey-item.wear-frequency{width:100%;margin:auto}.survey-item.wear-frequency .wear-item{display:inline-block;width:200px;margin:25px}.survey-item.wear-frequency .wear-item h3{font-size:1.4em;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;margin-bottom:10px;text-align:center}.survey-item.wear-frequency .wear-item .pic-wrap{position:relative;width:100%;padding-bottom:100%;margin-bottom:12px}.survey-item.wear-frequency .wear-item .pic-wrap .picture{position:absolute;top:0;bottom:0;left:0;right:0;overflow:hidden}.survey-item.wear-frequency .wear-item .button-wrap ul{padding:0;margin:0}.survey-item.wear-frequency .wear-item .button-wrap ul li{padding:0;margin:0px;list-style:none;width:100%;height:50px;border-bottom:1px solid transparent}.survey-item.wear-frequency .wear-item .button-wrap ul li.active label{color:#FFF;background-color:#479213}.survey-item.wear-frequency .wear-item .button-wrap ul li.active label span{display:inline-block}.survey-item.wear-frequency .wear-item .button-wrap ul li.active ~ li label{color:#abc68d;background-color:#479213}.survey-item.wear-frequency .wear-item .button-wrap ul li.hover label{color:#FFF !important;background-color:#759d40 !important}.survey-item.wear-frequency .wear-item .button-wrap ul li.hover ~ li label{color:#abc68d !important;background-color:#7eaa45 !important}.survey-item.wear-frequency .wear-item .button-wrap ul li.active-hover label{color:#FFF !important;background-color:#479213 !important}.survey-item.wear-frequency .wear-item .button-wrap ul li.active-hover ~ li label{color:#abc68d !important;background-color:#479213 !important}.survey-item.wear-frequency .wear-item .button-wrap ul li label{cursor:pointer;display:block;padding:15px 0px;text-align:center;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px;font-family:"proxima-nova",sans-serif;-webkit-font-smoothing:antialiased !important;width:100%;background-color:#f3f3f3;color:#6c6c6c}.survey-item.wear-frequency .wear-item .button-wrap ul li label span{margin-right:5px;display:none}@media (min-width: 500px) and (max-width: 1024px){.survey-item.wear-frequency{width:500px}}.survey-item.fashion-goal h3{font-size:1.6em !important;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;margin-bottom:10px;text-align:center}.survey-item.fashion-goal label.item{font-size:1.2em}.survey-item.fashion-goal label.item span.item-inner span.title-wrapper{margin-top:62px}.survey-item.price .required,.survey-item.account .required{color:#ac100a;font-size:0.8em}.survey-item.price input[type=text],.survey-item.price input[type=email],.survey-item.price input[type=password],.survey-item.account input[type=text],.survey-item.account input[type=email],.survey-item.account input[type=password]{width:100%;max-width:430px;text-align:center;color:#345975;border-color:rgba(0,0,0,0.3)}.survey-item.price input[type=text].half-size,.survey-item.price input[type=email].half-size,.survey-item.price input[type=password].half-size,.survey-item.account input[type=text].half-size,.survey-item.account input[type=email].half-size,.survey-item.account input[type=password].half-size{width:50%;max-width:215px}.survey-item.price input[type=text].half-size.left-half,.survey-item.price input[type=email].half-size.left-half,.survey-item.price input[type=password].half-size.left-half,.survey-item.account input[type=text].half-size.left-half,.survey-item.account input[type=email].half-size.left-half,.survey-item.account input[type=password].half-size.left-half{border-right:none;padding-right:24px}.survey-item.price-group{width:100%;margin:auto}.survey-item.price-group .item{cursor:pointer;background-color:#fff;border:1px solid #e1e1e1;width:150px;height:150px;color:#87ad47;font-size:2em;-webkit-border-radius:75px;-moz-border-radius:75px;border-radius:75px;margin:16px}.survey-item.price-group .item.active{background-color:#86ac45;border-color:#7ba239;color:#FFF}.survey-item.price-group .item:hover{background-color:#86ac45;border-color:#7ba239;color:#FFF}.survey-item.price-group .item .item-inner{display:block;width:100%;height:100%}.survey-item.price-group .item .item-inner span.title-wrapper{display:inline-block;margin:55px 0px 0px 0px;text-align:center;height:1.2em}@media (max-width: 750px){.survey-item.price-group{width:500px}}@media (max-width: 500px){.survey-item.price-group{width:100%}}.survey-item.account{margin:25px auto}.survey-item.account label{margin-bottom:10px;display:block;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;text-transform:uppercase;color:#345975}@media screen and (max-width: 430px){.survey-item.account{margin:35px 30px}}.survey-item.personal-colors{margin:0px}.survey-item.personal-colors .left{float:right}.survey-item.personal-colors .right{max-width:430px}@media screen and (max-width: 992px){.survey-item.personal-colors .left,.survey-item.personal-colors .right{float:none;margin:auto}.survey-item.personal-colors .left>div,.survey-item.personal-colors .right>div{margin:auto;max-width:430px;padding:0px}}@media screen and (max-width: 430px){.survey-item.personal-colors .left,.survey-item.personal-colors .right{max-width:none}.survey-item.personal-colors .left>div,.survey-item.personal-colors .right>div{max-width:none}.survey-item.personal-colors .right{margin:20px}}@media screen and (max-width: 340px){.survey-item.personal-colors .left{max-width:none}.survey-item.personal-colors .left .hair-colors{width:260px}.survey-item.personal-colors .left .hair-colors .hair-color{margin:2px 0px}}.survey-item.personal-colors .heading{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;margin:10px auto 30px auto}.survey-item.personal-colors .hair-colors{width:350px;padding-right:50px}.survey-item.personal-colors .hair-colors .hair-color{width:65px;height:65px;margin:3px 5px}.survey-item.personal-colors .hair-colors .hair-color.item{width:65px;height:65px;cursor:pointer}.survey-item.personal-colors .hair-colors .hair-color.item.active .item-inner{margin:0px;border:5px solid #8bba3a !important;height:63px;width:63px}.survey-item.personal-colors .hair-colors .hair-color.item:hover .item-inner{margin:0px;border:5px solid #DDD;height:63px;width:63px}.survey-item.personal-colors .hair-colors .hair-color.item .item-inner{display:block;height:54px;width:54px;background-repeat:no-repeat;background-position:center center;background-size:55px 55px;background-position:50%;border-radius:32px;margin:5px}.survey-item.personal-colors .hair-colors .hair-color.item .item-inner,.survey-item.personal-colors .hair-colors .hair-color.item .item-inner:before,.survey-item.personal-colors .hair-colors .hair-color.item .item-inner:after{-webkit-box-sizing:border-box !important;-moz-box-sizing:border-box !important;box-sizing:border-box !important}.survey-item.personal-colors .eye-colors .eye-color{width:122px;height:122px;margin:3px 9px}.survey-item.personal-colors .eye-colors .eye-color.item{padding:5px;cursor:pointer}.survey-item.personal-colors .eye-colors .eye-color.item.active{border:5px solid #8bba3a !important;padding:0px;border-radius:5px}.survey-item.personal-colors .eye-colors .eye-color.item:hover{border:5px solid #DDD;padding:0px;border-radius:5px}.survey-item.personal-colors .eye-colors .eye-color.item .item-inner{display:block;width:112px;height:112px;background-repeat:no-repeat;background-position:center center;background-size:112px 112px;background-position:50%}.survey-item.personal-colors .slider-wrap .heading{margin:40px auto 20px auto}.survey-item.personal-colors .slider-wrap .amount-wrap{margin-top:20px}.survey-item.personal-colors .slider-wrap .slider .ui-widget-content{position:relative;width:88%;margin:0 auto;left:0;right:0;background:transparent;height:18px;border:none;border-radius:5px}.survey-item.personal-colors .slider-wrap .slider .ui-widget-content .range-line-bg{cursor:pointer;margin:7px 0px;height:4px;width:100%;background-image:url("survey/ui/img_slidertracktrans.png");background-repeat:no-repeat}.survey-item.sliders .slider-options{position:relative;list-style:none;padding:0;width:112%;margin:0 auto;left:-4.2%;right:0}.survey-item.sliders .slider-options .option{display:inline-block;text-align:center;width:19%;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:#58728a;font-size:0.7em;font-weight:400}.survey-item.sliders .slider-options .option span{font-size:0.7em}@media screen and (max-width: 568px){.survey-item.sliders .slider-options .option{width:18.5%}}.survey-item.colors{text-align:center;width:800px;margin:auto}.survey-item.colors .item{display:inline-block;width:200px;margin:23px auto;padding:14px;position:relative}.survey-item.colors .item:hover img{opacity:0.7}.survey-item.colors .item.active .selected{display:block}.survey-item.colors .item .selected{padding:10px;background-image:url("survey/ui/dislike_color_overlay.png");background-repeat:no-repeat;background-position:top center;display:none;top:0;left:0;width:100%;height:102px;position:absolute}.survey-item.colors .item .item-inner{width:125px}.survey-item.colors .item .item-inner span.title{display:block;width:100%;text-align:center;padding:7px 0px;margin-top:10px;z-index:999}.survey-item.colors .item .item-inner img{width:82px;height:79px;padding:3px}@media screen and (max-width: 1024px){.survey-item.three_column{width:100%}.survey-item.five_column{width:100%}.survey-item.colors{width:100%}.survey-item.colors .item{width:200px;margin:23px 20px}}.brand{margin:0px 25%;height:100%;max-height:150px}.brand img{margin-top:30%}#climate_map{display:block;margin:0px auto 50px auto;padding:0px 20px;max-width:700px}.amount-wrap{position:relative;width:88%;margin:0 auto;left:0;right:0;height:auto;margin-top:40px;margin-bottom:15px}.amount-wrap .amount-left{position:relative;float:left;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:rgba(0,0,0,0.25);font-weight:600}.amount-wrap .amount-left .amount-low{color:rgba(0,0,0,0.25);font-weight:600;outline:0;border:0;width:50px}.amount-wrap .amount-right{position:relative;float:right;font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;color:rgba(0,0,0,0.25);font-weight:600}.amount-wrap .amount-right .amount-high{color:rgba(0,0,0,0.25);font-weight:600;outline:0;border:0;width:50px;text-align:right}#survey-error{position:fixed;bottom:25px;left:0;right:0;margin:0px auto;z-index:999;text-align:center}#survey-error .message{padding:15px 25px;border-radius:25px;border:1px solid #9a7f1e;color:#9a7f1e;background-color:#fff5d1;line-height:14px;font-size:12px;max-width:600px;display:block;margin:5px auto}#survey-error .message .close{right:auto;opacity:0.8;float:none;margin-left:8px;top:2px}body:not(.public-index-index) #close-wrapper{position:fixed;top:25px;right:25px}body:not(.public-index-index) #close-wrapper #close-icon{background-image:url("survey/ui/icon_survey_x.png");background-repeat:no-repeat;width:39px;height:39px}body.public-index-index .survey-item input[type=text],body.public-index-index .survey-item input[type=email],body.public-index-index .survey-item input[type=password]{border-color:#0c2a42 !important;border-width:2px !important}body.public-index-index #survey-wrapper .footer{background-color:#f9f9f9}body.public-index-index #survey-wrapper .footer .button-wrapper .btn-survey{font-family:"brandon-grotesque",sans-serif;-webkit-font-smoothing:antialiased !important;font-size:1.5em !important;font-weight:bold !important;letter-spacing:1px;height:100px;max-width:600px}body.public-index-index #survey-wrapper .footer .button-wrapper .btn-survey.submit{border:none;-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.6);-moz-box-shadow:0 1px 2px 0 rgba(0,0,0,0.6);box-shadow:0 1px 2px 0 rgba(0,0,0,0.6);-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;background-color:#cc3535;background:-moz-linear-gradient(top, #d53e3e 0%, #c62a2a 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #d53e3e), color-stop(100%, #c62a2a));background:-webkit-linear-gradient(top, #d53e3e 0%, #c62a2a 100%);background:-o-linear-gradient(top, #d53e3e 0%, #c62a2a 100%);background:-ms-linear-gradient(top, #d53e3e 0%, #c62a2a 100%);background:linear-gradient(to bottom, #d53e3e 0%,#c62a2a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d53e3e', endColorstr='#c62a2a',GradientType=0 )}body.public-index-index #survey-wrapper .footer .button-wrapper .btn-survey.submit:hover{background:#da4141}body.public-index-index #survey-wrapper .footer .button-wrapper .btn-survey.submit i{font-family:"adobe-caslon-pro",serif;font-style:ITALIC;font-size:1.2em;position:relative;top:1px}body.public-index-index #survey-wrapper .footer .button-wrapper .btn-survey.preferences{padding:27px 0px;border:2px solid #0c2a42;color:#0c2a42;background-color:#fff}body.public-index-index #close-wrapper{display:none}body.public-index-index #survey-wrapper .row.header{display:none}@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){#close-wrapper #close-icon{background-image:url("survey/ui/icon_survey_x@2x.png");background-position:50%;background-size:39px 39px}.survey-item .slider .ui-widget-content .range-line-bg{background-image:url("survey/ui/img_slidertracktrans@2x.png");background-position:50%}}@media screen and (max-width: 796px){#survey-error{width:90%;left:5%}#survey-error .message{margin-left:0}}
+
+  </style>
+</head>
+
+<body>
+<center>
+
+
+
+<section>
+<div class="question"><div class="number">1</div>
+<div class="title"><h3>Create your account (No spam. We promise.)</h3></div>
+<br>
+<div class="question-body row">
+<div class="col-md-8 col-md-offset-2">
+<div class="row survey-item account">
+<label>Name</label>
+<input class="half-size left-half" id="first_name" name="survey[user][first_name]" placeholder="First" tabindex="1000" type="text">
+<input class="half-size" id="last_name" name="survey[user][last_name]" placeholder="Last" tabindex="1000" type="text">
+</div>
+
+<div class="row survey-item account">
+<label>Email&nbsp;<span class="required">(Required)</span></label>
+<input data-error="A valid email is required" id="email" name="survey[user][email]" placeholder="youremail@provider.com" required="true" tabindex="1000" type="text">
+</div>
+
+<div class="row survey-item account">
+<label>Password&nbsp;<span class="required">(Required - 8 Character Min.)</span></label>
+<input data-error="A password with a minimum of eight (8) characters is required" id="password" name="survey[user][password]" required="true" tabindex="1000" type="password">
+</div>
+</div>
+</div>
+</section>
+<br>
+<hr>
+<br>
+
+
+
+<div class="container">
+<center>
+<section>
+<div class="question"><div class="number">2</div></div>
+<div class="title"><h3>Tell us about your style.</h3></div><br>
+<div class="container">
+<br>
+<div class="container">
+<h4>It's always best to be overdressed.</h4>
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Agree</button>
+</div>
+
+</div>
+<br><hr><br>
+
+<div class="container">
+<h4>I want people to notice my clothes.</h4>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Agree</button>
+</div>
+</div>
+<br><hr><br>
+
+
+<div class="container">
+<center>
+<h4>I <u>need</u> the clothes I wear to be physically comfortable.</h4>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Agree</button>
+</div>
+
+</div>
+<br><hr><br>
+
+
+<div class="container">
+<center>
+<h4>I'm OK disregarding other's expectations of how I dress.</h4>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Agree</button>
+</div>
+
+</div>
+<br><hr><br>
+
+
+<div class="container">
+<center>
+<h4>I'm OK being physically uncomfortable if it looks good.</h4>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Agree</button>
+</div>
+</div>
+<br><hr><br>
+
+
+<div class="container">
+<center>
+<h4>I like to take risks with my style.</h4>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-3">Strongly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-2">Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="-1">Slightly Disagree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="1">Slightly Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="2">Agree</button>
+</div>
+
+<div class="btn-group">
+<button type="button" class="btn btn-primary" value="3">Strongly Agree</button>
+</div>
+</div>
+<br><hr><br>
+
+
+
+</div>
+</section>
+
+
+####################################################################################################
+
+<br><hr>
+<section>
+<div class="question"><div class="number">3</div></div>
+<div class="title"><h3>What best describes your clothing budget?</h3></div>
+
+<div class="question-body row checkable"><div class="col-md-8 col-md-offset-2">
+<div class="survey-item price-group question-item-description">
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label=""><span class="item-inner"><span class="title-wrapper"><span class="title">$</span></span></span><input name="survey[profile][price-group]" type="radio" value="1"><span class="clearfix"></span></label>
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label=""><span class="item-inner"><span class="title-wrapper"><span class="title">$$</span></span></span><input name="survey[profile][price-group]" type="radio" value="2"><span class="clearfix"></span></label>
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label=""><span class="item-inner"><span class="title-wrapper"><span class="title">$$$</span></span></span><input name="survey[profile][price-group]" type="radio" value="3"><span class="clearfix"></span></label>
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label=""><span class="item-inner"><span class="title-wrapper"><span class="title">?</span></span></span><input name="survey[profile][price-group]" type="radio" value="0"><span class="clearfix"></span></label>
+</section>
+<br><hr><br>
+
+############################################################################################
+
+<section><div class="heading">
+<div class="col-md-8 col-md-offset-2">
+<div class="error"></div>
+<div class="question" data-test="">
+<div class="number">4</div>
+<div class="title"><h3>How often do you want to wear clothes that are for:</h3></div>
+</div>
+</div>
+<div class="caret">
+</div>
+</div>
+<div class="question-body row">
+<div class="col-md-12">
+<div class="survey-item wear-frequency">
+<div class="wear-item">
+<h3>Leisure</h3>
+<div class="pic-wrap">
+<div class="picture">
+<img src="frequency-leisure.png" width="100%">
+</div>
+</div>
+<div class="button-wrap">
+<ul class="checkgroup">
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="5">
+<span class="sprite icon-smallwhitecheckmark"></span>Almost Daily</label>
+</li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="4">
+<span class="sprite icon-smallwhitecheckmark"></span>5-6 days a week</label>
+</li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="3">
+<span class="sprite icon-smallwhitecheckmark"></span>3-4 days a week</label>
+</li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="2">
+<span class="sprite icon-smallwhitecheckmark"></span>1-2 days a week</label>
+</li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="1">
+<span class="sprite icon-smallwhitecheckmark"></span>A few days a month</label>
+</li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][leisure]" type="radio" value="0">
+<span class="sprite icon-smallwhitecheckmark"></span>Rarely or Never</label>
+</li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="wear-item">
+<h3>Going Out</h3>
+<div class="pic-wrap">
+<div class="picture"><img src="frequency-going-out.png" width="100%"></div>
+</div>
+
+<div class="button-wrap">
+<ul class="checkgroup">
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="5">
+<span class="sprite icon-smallwhitecheckmark"></span>Almost Daily</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="4">
+<span class="sprite icon-smallwhitecheckmark"></span>5-6 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="3">
+<span class="sprite icon-smallwhitecheckmark"></span>3-4 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="2">
+<span class="sprite icon-smallwhitecheckmark"></span>1-2 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="1">
+<span class="sprite icon-smallwhitecheckmark"></span>A few days a month</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][going-out]" type="radio" value="0">
+<span class="sprite icon-smallwhitecheckmark"></span>Rarely or Never</label></li>
+
+</ul>
+</div>
+</div>
+
+<div class="wear-item">
+<h3>Smart</h3>
+<div class="pic-wrap">
+<div class="picture"><img src="frequency-business-casual.png" width="100%"></div>
+</div>
+
+<div class="button-wrap">
+<ul class="checkgroup">
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="5">
+<span class="sprite icon-smallwhitecheckmark"></span>Almost Daily</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="4">
+<span class="sprite icon-smallwhitecheckmark"></span>5-6 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="3">
+<span class="sprite icon-smallwhitecheckmark"></span>3-4 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="2">
+<span class="sprite icon-smallwhitecheckmark"></span>1-2 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="1">
+<span class="sprite icon-smallwhitecheckmark"></span>A few days a month</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][business-casual]" type="radio" value="0">
+<span class="sprite icon-smallwhitecheckmark"></span>Rarely or Never</label></li>
+
+</ul>
+</div>
+</div>
+
+<div class="wear-item">
+<h3>Suiting Up</h3>
+<div class="pic-wrap">
+<div class="picture"><img src="frequency-business.png" width="100%"></div>
+</div>
+
+<div class="button-wrap">
+<ul class="checkgroup">
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="5">
+<span class="sprite icon-smallwhitecheckmark"></span>Almost Daily</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="4">
+<span class="sprite icon-smallwhitecheckmark"></span>5-6 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="3">
+<span class="sprite icon-smallwhitecheckmark"></span>3-4 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="2">
+<span class="sprite icon-smallwhitecheckmark"></span>1-2 days a week</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="1">
+<span class="sprite icon-smallwhitecheckmark"></span>A few days a month</label></li>
+
+<li class="item">
+<label>
+<input name="survey[profile][occasion-frequency][suiting-up]" type="radio" value="0">
+<span class="sprite icon-smallwhitecheckmark"></span>Rarely or Never</label></li>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<br><hr><br>
+
+
+<section>
+<div class="heading">
+<div class="col-md-8 col-md-offset-2">
+<div class="error"></div>
+<div class="question"><div class="number"><center>5</div>
+<div class="title"><h3>Which type of climate do you live in?</h3></div>
+</div>
+<br>
+</div>
+<div class="caret"></div>
+</div>
+<div class="question-body row checkable">
+<div class="col-md-10 col-md-offset-1">
+<img alt="Climate Map" data-src2x="climatemap.png" id="climate_map" src="climatemap.png" width="100%">
+<div class="survey-item climate">
+
+<div class="col-md-2 col-md-offset-1 col-sm-6">
+<label class="item far-north" for="survey_profile_climate_far-north">Brrr...
+<input id="survey_profile_climate_far-north" name="survey[profile][climate]" type="radio" value="far-north"></label>
+</div>
+
+<div class="col-md-2 col-sm-6">
+<label class="item north" for="survey_profile_climate_north">Very Cold
+<input id="survey_profile_climate_north" name="survey[profile][climate]" type="radio" value="north"></label>
+</div>
+
+<div class="col-md-2 col-sm-6">
+<label class="item middle" for="survey_profile_climate_middle">Moderate
+<input id="survey_profile_climate_middle" name="survey[profile][climate]" type="radio" value="middle"></label>
+</div>
+
+<div class="col-md-2 col-sm-6">
+<label class="item south" for="survey_profile_climate_south">Pretty Warm
+<input id="survey_profile_climate_south" name="survey[profile][climate]" type="radio" value="south"></label>
+</div>
+
+<div class="col-md-2 col-sm-6 col-sm-offset-3 col-md-offset-0">
+<label class="item far-south" for="survey_profile_climate_far-south">Seriously Hot
+<input id="survey_profile_climate_far-south" name="survey[profile][climate]" type="radio" value="far-south"></label>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<br><hr><br>
+
+
+
+<section>
+<div class="heading">
+<div class="col-sm-12">
+<div class="error"></div>
+<div class="question"><div class="number">6</div>
+<div class="title">Which body type is most like you?</div>
+</div>
+</div>
+<div class="caret"></div>
+</div>
+<div class="question-body row checkable">
+<div class="col-md-12">
+<div class="survey-item body-preset question-item-description">
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label="">
+<span class="item-inner">
+<img data-src2x="trapezoid@2x.png" src="trapezoid.png">
+<span class="title">Trapezoid</span>
+</span>
+<input name="survey[profile][body-type]" type="radio" value="trapezoid"><span class="clearfix">
+</span>
+</label>
+<div class="mobile-label">Broad Shoulders, Broad Chest, Narrow Waist, Narrow Hips.</div>
+
+
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label="">
+<span class="item-inner">
+<img data-src2x="inverttriangle@2x.png" src="inverttriangle.png">
+<span class="title">Inverted Triangle</span>
+</span>
+<input name="survey[profile][body-type]" type="radio" value="inverted-triangle">
+<span class="clearfix"></span>
+</label>
+<div class="mobile-label">Broad Shoulders, Broad Chest, Really Narrow Waist, Really Narrow Hips.</div>
+
+
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label="">
+<span class="item-inner">
+<img data-src2x="rectangle@2x.png" src="rectangle.png">
+<span class="title">Rectangle</span>
+</span>
+<input name="survey[profile][body-type]" type="radio" value="rectangle">
+<span class="clearfix"></span>
+</label>
+<div class="mobile-label">Shoulders, hips, and waist same width.</div>
+
+
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label="">
+<span class="item-inner">
+<img data-src2x="oval@2x.png" src="oval.png">
+<span class="title">Oval</span></span>
+<input name="survey[profile][body-type]" type="radio" value="oval">
+<span class="clearfix"></span>
+</label>
+<div class="mobile-label">Chest and shoulders are narrower than waist and hips.</div>
+
+<label class="item " data-log-action="" data-log-category="survey" data-log-ga="true" data-log-label="">
+<span class="item-inner">
+<img data-src2x="triangle@2x.png" src="triangle.png">
+<span class="title">Triangle</span>
+</span>
+<input name="survey[profile][body-type]" type="radio" value="triangle">
+<span class="clearfix"></span>
+</label>
+<div class="mobile-label">Round at the center of the body.</div>
+
+
+<div class="question-description mobile-label" id="question_description"><div class="title"></div><div class="text"></div></div></div></div></div>
+
+</section>
+<br><hr><br>
+
+
+<section>
+<div class="heading">
+<div class="col-md-8 col-md-offset-2">
+<div class="error"></div>
+<div class="question">
+<div class="number">7</div>
+<div class="title">Tell us about your colors.</div>
+</div>
+</div>
+<div class="caret"></div>
+</div>
+<div class="question-body row checkable">
+<div class="col-md-8 col-md-offset-2">
+<div class="row survey-item personal-colors sliders">
+<div class="col-md-6">
+<div class="left">
+<div class="hair-colors checkgroup">
+<div class="heading">What color is your hair?</div>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_5-b3f9fc876477f8356a621e454f3c6ffd.png">
+<input name="survey[profile][hair-index]" type="radio" value="5">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_10-084d9786c29ce3e28e68907142ebfb86.png">
+<input name="survey[profile][hair-index]" type="radio" value="10">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_15-bb8eefc42314683757df62d5a70e7e90.png">
+<input name="survey[profile][hair-index]" type="radio" value="15">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_20-405fe443e863dfa2833625510b451916.png">
+<input name="survey[profile][hair-index]" type="radio" value="20">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_4-c5682705afa8f5339a32575b37fb7500.png">
+<input name="survey[profile][hair-index]" type="radio" value="4">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_9-ecb18276aa6c7874b30eecd54dcc8191.png">
+<input name="survey[profile][hair-index]" type="radio" value="9">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_14-106629d0018229e2866ee86c11f0a88e.png">
+<input name="survey[profile][hair-index]" type="radio" value="14">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_19-55a64cc42dac9506248ad5c63d9f39b5.png">
+<input name="survey[profile][hair-index]" type="radio" value="19">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_3-a990a1284bf9f2c0bdbc21c0aa636184.png">
+<input name="survey[profile][hair-index]" type="radio" value="3">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_8-388df4d563d154ef277be95c4950fabc.png">
+<input name="survey[profile][hair-index]" type="radio" value="8">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_13-bc55cb166cac5aec244141bbb8ead34d.png">
+<input name="survey[profile][hair-index]" type="radio" value="13">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_18-2149dd799052aee17066d2751b9cd797.png">
+<input name="survey[profile][hair-index]" type="radio" value="18">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_2-f541849ddfb2fc9e89df08da8bdac475.png">
+<input name="survey[profile][hair-index]" type="radio" value="2">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_7-70ac6db89d8cb22d968c1997544d627d.png">
+<input name="survey[profile][hair-index]" type="radio" value="7">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_12-55c90be5a724c9ab2afee68a2074603e.png">
+<input name="survey[profile][hair-index]" type="radio" value="12">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_17-fa5ca204ed63c71da9e0fe5f6bb76e4a.png">
+<input name="survey[profile][hair-index]" type="radio" value="17">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_1-4e3e076911fe6146cbedfdf52cb7c139.png">
+<input name="survey[profile][hair-index]" type="radio" value="1">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_6-ff5b77038a2747b6aa730753a4675f7a.png">
+<input name="survey[profile][hair-index]" type="radio" value="6">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_11-83710a6b1a62f1d4d8ff8d4c4bd0fceb.png">
+<input name="survey[profile][hair-index]" type="radio" value="11">
+</label>
+
+<label class="hair-color item">
+<img class="item-inner" src="img_hair_16-7d949df178585f3f93a714227fd024e1.png">
+<input name="survey[profile][hair-index]" type="radio" value="16">
+</label>
+
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<div class="col-md-6">
+<div class="right">
+<div class="eye-colors checkgroup">
+<div class="heading">What color are your eyes?</div>
+
+<label class="eye-color item">
+<img class="item-inner" src="blue_eye.png">
+<input data-color="#467cae" name="survey[profile][eye-color]" type="radio" value="blue">
+</label>
+
+<label class="eye-color item">
+<img class="item-inner" src="black_eye.png">
+<input data-color="#000000" name="survey[profile][eye-color]" type="radio" value="black">
+</label>
+
+<label class="eye-color item">
+<img class="item-inner" src="brown_eye.png">
+<input data-color="#683f31" name="survey[profile][eye-color]" type="radio" value="brown">
+</label>
+
+
+</section>
+
+
+</body>
+</html>
+
+
